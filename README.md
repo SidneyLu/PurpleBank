@@ -1,4 +1,4 @@
-# PurpleBank -- An Nucleotide Sequence Database 
+# PurpleBank -- A Nucleotide Sequence Database 
 > This is the final project for course *Database Systems* at NKU-CS.
 > 
 > PurpleBank is designed according to the schematic of NCBI-Gene, with basic
