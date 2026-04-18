@@ -356,3 +356,128 @@ LEFT JOIN (
     GROUP BY accession
 ) AS op ON op.accession = s.accession;
 
+
+-- ============================================================
+-- Module 08: Stored procedures
+-- Purpose: Execute reviewed sequence update in one controlled routine.
+-- Prerequisite: Modules 01-07 are complete.
+-- Suggested execution order: 08
+-- ============================================================
+
+USE purple_bank;
+
+DROP PROCEDURE IF EXISTS sp_update_sequence_reviewed;
+
+DELIMITER //
+CREATE PROCEDURE sp_update_sequence_reviewed(
+    IN p_accession VARCHAR(50),
+    IN p_version VARCHAR(50),
+    IN p_locus VARCHAR(50),
+    IN p_definition TEXT,
+    IN p_organism_id INT,
+    IN p_mol_type VARCHAR(50),
+    IN p_sequence LONGTEXT,
+    IN p_feature_gene VARCHAR(50),
+    IN p_feature_product TEXT,
+    IN p_feature_location VARCHAR(100),
+    IN p_feature_note TEXT
+)
+BEGIN
+    DECLARE v_seq_exists INT DEFAULT 0;
+    DECLARE v_feature_exists INT DEFAULT 0;
+
+    SELECT COUNT(*) INTO v_seq_exists
+    FROM Sequence
+    WHERE accession = p_accession;
+
+    IF v_seq_exists = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'accession does not exist';
+    END IF;
+
+    UPDATE Sequence
+    SET
+        version = COALESCE(p_version, version),
+        locus = COALESCE(p_locus, locus),
+        definition = COALESCE(p_definition, definition),
+        organism_id = COALESCE(p_organism_id, organism_id),
+        mol_type = COALESCE(p_mol_type, mol_type),
+        sequence = COALESCE(p_sequence, sequence)
+    WHERE accession = p_accession;
+
+    IF p_feature_gene IS NOT NULL
+       OR p_feature_product IS NOT NULL
+       OR p_feature_location IS NOT NULL
+       OR p_feature_note IS NOT NULL THEN
+
+        SELECT COUNT(*) INTO v_feature_exists
+        FROM Feature
+        WHERE accession = p_accession AND `key` = 'gene';
+
+        IF v_feature_exists > 0 THEN
+            UPDATE Feature
+            SET
+                gene = COALESCE(p_feature_gene, gene),
+                product = COALESCE(p_feature_product, product),
+                location = COALESCE(p_feature_location, location),
+                note = COALESCE(p_feature_note, note)
+            WHERE accession = p_accession AND `key` = 'gene';
+        ELSE
+            INSERT INTO Feature(accession, `key`, location, gene, product, note)
+            VALUES(
+                p_accession,
+                'gene',
+                COALESCE(p_feature_location, 'unknown'),
+                COALESCE(p_feature_gene, 'unknown'),
+                p_feature_product,
+                p_feature_note
+            );
+        END IF;
+    END IF;
+
+    INSERT INTO sequence_operation_log(accession, operate_type, operator_name, operate_desc)
+    VALUES (
+        p_accession,
+        'update_approved',
+        'review_engine',
+        'sequence updated by approved change request'
+    );
+END//
+DELIMITER ;
+
+
+-- ============================================================
+-- Module 09: User change request workflow
+-- Purpose: Support admin-submitted user create/delete requests with review.
+-- Prerequisite: Modules 01-08 are complete.
+-- Suggested execution order: 09
+-- ============================================================
+
+USE purple_bank;
+
+CREATE TABLE IF NOT EXISTS user_change_request
+(
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    action_type ENUM('CREATE', 'DELETE') NOT NULL,
+    payload_json JSON NOT NULL,
+    reason VARCHAR(255) NULL,
+    status ENUM('PENDING', 'APPROVED', 'REJECTED') NOT NULL DEFAULT 'PENDING',
+    requester_id BIGINT NOT NULL,
+    reviewer_id BIGINT NULL,
+    review_comment VARCHAR(255) NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    reviewed_at DATETIME NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_user_change_request_requester
+        FOREIGN KEY (requester_id) REFERENCES app_user(id),
+    CONSTRAINT FK_user_change_request_reviewer
+        FOREIGN KEY (reviewer_id) REFERENCES app_user(id)
+);
+
+DROP INDEX IF EXISTS IDX_user_change_request_status_time ON user_change_request;
+CREATE INDEX IDX_user_change_request_status_time
+    ON user_change_request(status, created_at);
+
+DROP INDEX IF EXISTS IDX_user_change_request_requester_time ON user_change_request;
+CREATE INDEX IDX_user_change_request_requester_time
+    ON user_change_request(requester_id, created_at);
+
