@@ -1,0 +1,21 @@
+<html><head><meta charset='utf-8'><style>
+body{font-family:Consolas,Monaco,monospace;background:#f5f7fb;color:#111;margin:0;padding:24px}
+.box{background:#fff;border:1px solid #cfd6e6;border-radius:10px;padding:18px;max-width:1500px}
+h1{font-size:24px;margin:0 0 8px 0} .meta{color:#555;margin-bottom:16px}
+pre{white-space:pre-wrap;word-break:break-word;background:#0b1020;color:#dbe6ff;padding:14px;border-radius:8px;font-size:14px;line-height:1.45}
+</style></head><body><div class='box'><h1>场景4 触发器插入失败</h1><div class='meta'>来源: 04_trigger_create_fail.json（真实执行输出）</div><pre>{
+  &quot;submit&quot;: {
+    &quot;status&quot;: 201,
+    &quot;body&quot;: &quot;{\&quot;id\&quot;:21,\&quot;action_type\&quot;:\&quot;CREATE\&quot;,\&quot;target_accession\&quot;:\&quot;DEMO_CREATE_BAD_001\&quot;,\&quot;payload_json\&quot;:{\&quot;locus\&quot;:\&quot;DEMO_LOCUS_CREATE_BAD\&quot;,\&quot;version\&quot;:\&quot;1.0\&quot;,\&quot;mol_type\&quot;:\&quot;DNA\&quot;,\&quot;sequence\&quot;:\&quot;ATCGXYZ123\&quot;,\&quot;accession\&quot;:\&quot;DEMO_CREATE_BAD_001\&quot;,\&quot;definition\&quot;:\&quot;Demo invalid create\&quot;,\&quot;organism_id\&quot;:13596},\&quot;reason\&quot;:\&quot;create fail\&quot;,\&quot;status\&quot;:\&quot;PENDING\&quot;,\&quot;requester_id\&quot;:10,\&quot;reviewer_id\&quot;:null,\&quot;review_comment\&quot;:null,\&quot;created_at\&quot;:\&quot;2026-05-20T13:01:38\&quot;,\&quot;reviewed_at\&quot;:null}&quot;
+  },
+  &quot;request_id&quot;: 21,
+  &quot;review&quot;: {
+    &quot;status&quot;: 500,
+    &quot;body&quot;: &quot;Internal Server Error&quot;
+  },
+  &quot;counts&quot;: {
+    &quot;sequence&quot;: 0,
+    &quot;review&quot;: 0,
+    &quot;log&quot;: 0
+  }
+}</pre></div></body></html>

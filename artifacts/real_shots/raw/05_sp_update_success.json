@@ -1,0 +1,14 @@
+{
+  "submit": {
+    "status": 201,
+    "body": "{\"id\":22,\"action_type\":\"UPDATE\",\"target_accession\":\"DEMO_CREATE_OK_001\",\"payload_json\":{\"mol_type\":\"mRNA\",\"definition\":\"Updated by sp_update_sequence_reviewed demo\",\"feature_gene\":\"demo_gene_upd\",\"feature_note\":\"demo note from procedure\",\"feature_product\":\"demo_product_upd\",\"feature_location\":\"10..120\"},\"reason\":\"update ok\",\"status\":\"PENDING\",\"requester_id\":10,\"reviewer_id\":null,\"review_comment\":null,\"created_at\":\"2026-05-20T13:01:38\",\"reviewed_at\":null}"
+  },
+  "request_id": 22,
+  "review": {
+    "status": 200,
+    "body": "{\"request_id\":22,\"status\":\"APPROVED\",\"execution_summary\":\"UPDATE executed for accession DEMO_CREATE_OK_001.\"}"
+  },
+  "sequence": [],
+  "feature": [],
+  "log": []
+}

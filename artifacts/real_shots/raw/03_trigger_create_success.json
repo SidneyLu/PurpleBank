@@ -1,0 +1,14 @@
+{
+  "submit": {
+    "status": 201,
+    "body": "{\"id\":20,\"action_type\":\"CREATE\",\"target_accession\":\"DEMO_CREATE_OK_001\",\"payload_json\":{\"locus\":\"DEMO_LOCUS_CREATE_OK\",\"version\":\"1.0\",\"mol_type\":\"DNA\",\"sequence\":\"ATCGATCGATCGATCGATCG\",\"accession\":\"DEMO_CREATE_OK_001\",\"definition\":\"Demo valid create\",\"organism_id\":13596},\"reason\":\"create ok\",\"status\":\"PENDING\",\"requester_id\":10,\"reviewer_id\":null,\"review_comment\":null,\"created_at\":\"2026-05-20T13:01:38\",\"reviewed_at\":null}"
+  },
+  "request_id": 20,
+  "review": {
+    "status": 200,
+    "body": "{\"request_id\":20,\"status\":\"APPROVED\",\"execution_summary\":\"CREATE executed for accession DEMO_CREATE_OK_001.\"}"
+  },
+  "sequence": [],
+  "review_row": [],
+  "log": []
+}

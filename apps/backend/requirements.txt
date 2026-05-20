@@ -1,0 +1,16 @@
+# Runtime (API + DB)
+fastapi==0.115.12
+uvicorn==0.30.6
+pydantic==2.11.7
+pydantic-settings==2.6.1
+python-dotenv==1.2.2
+sqlalchemy==2.0.38
+pymysql==1.1.1
+cryptography==46.0.7
+passlib==1.7.4
+PyJWT==2.10.1
+python-multipart==0.0.20
+
+# Test/development
+httpx==0.28.1
+pytest==8.3.4

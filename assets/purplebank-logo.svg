@@ -1,0 +1,39 @@
+<svg width="960" height="320" viewBox="0 0 960 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pb-grad" x1="40" y1="40" x2="280" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9B5CFF"/>
+      <stop offset="1" stop-color="#5A2DB3"/>
+    </linearGradient>
+    <linearGradient id="pb-accent" x1="36" y1="36" x2="284" y2="284" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C6A3FF"/>
+      <stop offset="1" stop-color="#7F57D9"/>
+    </linearGradient>
+    <filter id="pb-shadow" x="0" y="0" width="340" height="340" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="0" dy="8"/>
+      <feGaussianBlur stdDeviation="12"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.23 0 0 0 0 0.11 0 0 0 0 0.44 0 0 0 0.25 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="320" rx="28" fill="#F4EEFF"/>
+
+  <g filter="url(#pb-shadow)">
+    <rect x="36" y="36" width="248" height="248" rx="56" fill="url(#pb-grad)"/>
+
+    <path d="M94 104H158C191.137 104 218 130.863 218 164C218 197.137 191.137 224 158 224H124V182H156C166.493 182 175 173.493 175 163C175 152.507 166.493 144 156 144H136V244H94V104Z" fill="white"/>
+    <rect x="172" y="96" width="34" height="152" rx="17" fill="url(#pb-accent)"/>
+
+    <path d="M226 112L248 130L234 146L212 128L226 112Z" fill="#EBDDFF"/>
+    <path d="M222 164L256 192L240 210L206 182L222 164Z" fill="#EBDDFF"/>
+  </g>
+
+  <g>
+    <text x="332" y="148" fill="#2A154D" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="1">PurpleBank</text>
+    <text x="334" y="194" fill="#5C3D8F" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="500" letter-spacing="2.2">NUCLEOTIDE DATABASE</text>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "list_api": {
+    "status": 200,
+    "body": "{\"items\":[{\"accession\":\"DEMO_CREATE_OK_001\",\"version\":\"1.0\",\"locus\":\"DEMO_LOCUS_CREATE_OK\",\"scientific_name\":\"Nicotiana tabacum\",\"genus\":\"Nicotiana\",\"seq_status_desc\":\"approved\",\"seq_length\":20,\"submit_time\":\"2026-05-20T13:01:38\",\"operate_count\":2},{\"accession\":\"DEMO_DELETE_OK_001\",\"version\":\"1.0\",\"locus\":\"DEMO_LOCUS_DEL2\",\"scientific_name\":\"Nicotiana tabacum\",\"genus\":\"Nicotiana\",\"seq_status_desc\":\"approved\",\"seq_length\":24,\"submit_time\":\"2026-05-20T13:01:38\",\"operate_count\":1}],\"page\":1,\"page_size\":5,\"total\":2}"
+  },
+  "list_sql": [
+    {
+      "accession": "DEMO_DELETE_OK_001",
+      "version": "1.0",
+      "locus": "DEMO_LOCUS_DEL2",
+      "scientific_name": "Nicotiana tabacum",
+      "genus": "Nicotiana",
+      "seq_status_desc": "approved",
+      "seq_length": 24,
+      "submit_time": "2026-05-20 13:01:38",
+      "operate_count": 1
+    }
+  ],
+  "detail_api": {
+    "status": 200,
+    "body": "{\"accession\":\"DEMO_CREATE_OK_001\",\"version\":\"1.0\",\"locus\":\"DEMO_LOCUS_CREATE_OK\",\"definition\":\"Updated by sp_update_sequence_reviewed demo\",\"organism_id\":13596,\"scientific_name\":\"Nicotiana tabacum\",\"genus\":\"Nicotiana\",\"seq_status\":1,\"seq_status_desc\":\"approved\",\"submitter\":\"approval_engine\",\"submit_time\":\"2026-05-20T13:01:38\",\"seq_length\":20,\"sequence\":\"ATCGATCGATCGATCGATCG\",\"features\":[{\"feature_id\":27273,\"key\":\"gene\",\"location\":\"10..120\",\"gene\":\"demo_gene_upd\",\"product\":\"demo_product_upd\",\"translation\":null,\"note\":\"demo note from procedure\"}],\"references\":[]}"
+  },
+  "detail_sql": []
+}

@@ -267,8 +267,9 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence content must be non-empty and length >= 10';
     END IF;
 
-    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUN]') THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters';
+    -- Allow IUPAC nucleotide ambiguity codes so raw NCBI data can be imported.
+    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUNRYSKWMBDHV]') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters (IUPAC expected)';
     END IF;
 
     SET NEW.length = CHAR_LENGTH(NEW.sequence);
@@ -282,8 +283,8 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence content must be non-empty and length >= 10';
     END IF;
 
-    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUN]') THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters';
+    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUNRYSKWMBDHV]') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters (IUPAC expected)';
     END IF;
 
     SET NEW.length = CHAR_LENGTH(NEW.sequence);
@@ -473,11 +474,35 @@ CREATE TABLE IF NOT EXISTS user_change_request
         FOREIGN KEY (reviewer_id) REFERENCES app_user(id)
 );
 
-DROP INDEX IF EXISTS IDX_user_change_request_status_time ON user_change_request;
-CREATE INDEX IDX_user_change_request_status_time
-    ON user_change_request(status, created_at);
+SET @idx_status_exists = (
+    SELECT COUNT(*)
+    FROM information_schema.statistics
+    WHERE table_schema = DATABASE()
+      AND table_name = 'user_change_request'
+      AND index_name = 'IDX_user_change_request_status_time'
+);
+SET @sql_idx_status = IF(
+    @idx_status_exists = 0,
+    'CREATE INDEX IDX_user_change_request_status_time ON user_change_request(status, created_at)',
+    'SELECT 1'
+);
+PREPARE stmt_idx_status FROM @sql_idx_status;
+EXECUTE stmt_idx_status;
+DEALLOCATE PREPARE stmt_idx_status;
 
-DROP INDEX IF EXISTS IDX_user_change_request_requester_time ON user_change_request;
-CREATE INDEX IDX_user_change_request_requester_time
-    ON user_change_request(requester_id, created_at);
+SET @idx_requester_exists = (
+    SELECT COUNT(*)
+    FROM information_schema.statistics
+    WHERE table_schema = DATABASE()
+      AND table_name = 'user_change_request'
+      AND index_name = 'IDX_user_change_request_requester_time'
+);
+SET @sql_idx_requester = IF(
+    @idx_requester_exists = 0,
+    'CREATE INDEX IDX_user_change_request_requester_time ON user_change_request(requester_id, created_at)',
+    'SELECT 1'
+);
+PREPARE stmt_idx_requester FROM @sql_idx_requester;
+EXECUTE stmt_idx_requester;
+DEALLOCATE PREPARE stmt_idx_requester;
 

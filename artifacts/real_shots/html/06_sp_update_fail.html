@@ -1,0 +1,21 @@
+<html><head><meta charset='utf-8'><style>
+body{font-family:Consolas,Monaco,monospace;background:#f5f7fb;color:#111;margin:0;padding:24px}
+.box{background:#fff;border:1px solid #cfd6e6;border-radius:10px;padding:18px;max-width:1500px}
+h1{font-size:24px;margin:0 0 8px 0} .meta{color:#555;margin-bottom:16px}
+pre{white-space:pre-wrap;word-break:break-word;background:#0b1020;color:#dbe6ff;padding:14px;border-radius:8px;font-size:14px;line-height:1.45}
+</style></head><body><div class='box'><h1>场景6 存储过程更新失败</h1><div class='meta'>来源: 06_sp_update_fail.json（真实执行输出）</div><pre>{
+  &quot;submit&quot;: {
+    &quot;status&quot;: 201,
+    &quot;body&quot;: &quot;{\&quot;id\&quot;:23,\&quot;action_type\&quot;:\&quot;UPDATE\&quot;,\&quot;target_accession\&quot;:\&quot;DEMO_NO_SUCH_ACCESSION_001\&quot;,\&quot;payload_json\&quot;:{\&quot;definition\&quot;:\&quot;should fail\&quot;},\&quot;reason\&quot;:\&quot;update fail\&quot;,\&quot;status\&quot;:\&quot;PENDING\&quot;,\&quot;requester_id\&quot;:10,\&quot;reviewer_id\&quot;:null,\&quot;review_comment\&quot;:null,\&quot;created_at\&quot;:\&quot;2026-05-20T13:01:38\&quot;,\&quot;reviewed_at\&quot;:null}&quot;
+  },
+  &quot;request_id&quot;: 23,
+  &quot;review&quot;: {
+    &quot;status&quot;: 500,
+    &quot;body&quot;: &quot;Internal Server Error&quot;
+  },
+  &quot;counts&quot;: {
+    &quot;sequence&quot;: 0,
+    &quot;feature&quot;: 0,
+    &quot;log&quot;: 0
+  }
+}</pre></div></body></html>

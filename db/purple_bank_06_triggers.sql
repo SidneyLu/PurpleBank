@@ -28,8 +28,9 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence content must be non-empty and length >= 10';
     END IF;
 
-    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUN]') THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters';
+    -- Allow IUPAC nucleotide ambiguity codes so raw NCBI data can be imported.
+    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUNRYSKWMBDHV]') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters (IUPAC expected)';
     END IF;
 
     SET NEW.length = CHAR_LENGTH(NEW.sequence);
@@ -43,8 +44,8 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence content must be non-empty and length >= 10';
     END IF;
 
-    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUN]') THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters';
+    IF REGEXP_LIKE(UPPER(NEW.sequence), '[^ATCGUNRYSKWMBDHV]') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'sequence contains invalid nucleotide characters (IUPAC expected)';
     END IF;
 
     SET NEW.length = CHAR_LENGTH(NEW.sequence);

@@ -1,0 +1,1 @@
+"""PurpleBank backend application package."""

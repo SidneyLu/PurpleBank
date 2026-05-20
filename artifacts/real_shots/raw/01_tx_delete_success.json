@@ -1,0 +1,21 @@
+{
+  "submit": {
+    "status": 201,
+    "body": "{\"id\":19,\"action_type\":\"DELETE\",\"target_accession\":\"DEMO_DELETE_OK_001\",\"payload_json\":{},\"reason\":\"demo delete\",\"status\":\"PENDING\",\"requester_id\":10,\"reviewer_id\":null,\"review_comment\":null,\"created_at\":\"2026-05-20T13:01:38\",\"reviewed_at\":null}"
+  },
+  "request_id": 19,
+  "review": {
+    "status": 200,
+    "body": "{\"request_id\":19,\"status\":\"APPROVED\",\"execution_summary\":\"DELETE executed for accession DEMO_DELETE_OK_001.\"}"
+  },
+  "sql": {
+    "Sequence": 0,
+    "Feature": 0,
+    "DNA": 0,
+    "RNA": 0,
+    "Ref_Sequence": 0,
+    "Reference": 0,
+    "sequence_review": 0,
+    "sequence_operation_log": 0
+  }
+}

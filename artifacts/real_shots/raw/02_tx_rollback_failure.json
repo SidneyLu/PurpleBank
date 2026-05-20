@@ -1,0 +1,11 @@
+{
+  "before": {
+    "feature": 1,
+    "dna": 1
+  },
+  "error": "(1146, \"Table 'purple_bank.table_not_exists_for_demo' doesn't exist\")",
+  "after": {
+    "feature": 1,
+    "dna": 1
+  }
+}

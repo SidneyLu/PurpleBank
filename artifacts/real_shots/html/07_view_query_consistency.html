@@ -1,0 +1,29 @@
+<html><head><meta charset='utf-8'><style>
+body{font-family:Consolas,Monaco,monospace;background:#f5f7fb;color:#111;margin:0;padding:24px}
+.box{background:#fff;border:1px solid #cfd6e6;border-radius:10px;padding:18px;max-width:1500px}
+h1{font-size:24px;margin:0 0 8px 0} .meta{color:#555;margin-bottom:16px}
+pre{white-space:pre-wrap;word-break:break-word;background:#0b1020;color:#dbe6ff;padding:14px;border-radius:8px;font-size:14px;line-height:1.45}
+</style></head><body><div class='box'><h1>场景7 视图查询一致性</h1><div class='meta'>来源: 07_view_query_consistency.json（真实执行输出）</div><pre>{
+  &quot;list_api&quot;: {
+    &quot;status&quot;: 200,
+    &quot;body&quot;: &quot;{\&quot;items\&quot;:[{\&quot;accession\&quot;:\&quot;DEMO_CREATE_OK_001\&quot;,\&quot;version\&quot;:\&quot;1.0\&quot;,\&quot;locus\&quot;:\&quot;DEMO_LOCUS_CREATE_OK\&quot;,\&quot;scientific_name\&quot;:\&quot;Nicotiana tabacum\&quot;,\&quot;genus\&quot;:\&quot;Nicotiana\&quot;,\&quot;seq_status_desc\&quot;:\&quot;approved\&quot;,\&quot;seq_length\&quot;:20,\&quot;submit_time\&quot;:\&quot;2026-05-20T13:01:38\&quot;,\&quot;operate_count\&quot;:2},{\&quot;accession\&quot;:\&quot;DEMO_DELETE_OK_001\&quot;,\&quot;version\&quot;:\&quot;1.0\&quot;,\&quot;locus\&quot;:\&quot;DEMO_LOCUS_DEL2\&quot;,\&quot;scientific_name\&quot;:\&quot;Nicotiana tabacum\&quot;,\&quot;genus\&quot;:\&quot;Nicotiana\&quot;,\&quot;seq_status_desc\&quot;:\&quot;approved\&quot;,\&quot;seq_length\&quot;:24,\&quot;submit_time\&quot;:\&quot;2026-05-20T13:01:38\&quot;,\&quot;operate_count\&quot;:1}],\&quot;page\&quot;:1,\&quot;page_size\&quot;:5,\&quot;total\&quot;:2}&quot;
+  },
+  &quot;list_sql&quot;: [
+    {
+      &quot;accession&quot;: &quot;DEMO_DELETE_OK_001&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;locus&quot;: &quot;DEMO_LOCUS_DEL2&quot;,
+      &quot;scientific_name&quot;: &quot;Nicotiana tabacum&quot;,
+      &quot;genus&quot;: &quot;Nicotiana&quot;,
+      &quot;seq_status_desc&quot;: &quot;approved&quot;,
+      &quot;seq_length&quot;: 24,
+      &quot;submit_time&quot;: &quot;2026-05-20 13:01:38&quot;,
+      &quot;operate_count&quot;: 1
+    }
+  ],
+  &quot;detail_api&quot;: {
+    &quot;status&quot;: 200,
+    &quot;body&quot;: &quot;{\&quot;accession\&quot;:\&quot;DEMO_CREATE_OK_001\&quot;,\&quot;version\&quot;:\&quot;1.0\&quot;,\&quot;locus\&quot;:\&quot;DEMO_LOCUS_CREATE_OK\&quot;,\&quot;definition\&quot;:\&quot;Updated by sp_update_sequence_reviewed demo\&quot;,\&quot;organism_id\&quot;:13596,\&quot;scientific_name\&quot;:\&quot;Nicotiana tabacum\&quot;,\&quot;genus\&quot;:\&quot;Nicotiana\&quot;,\&quot;seq_status\&quot;:1,\&quot;seq_status_desc\&quot;:\&quot;approved\&quot;,\&quot;submitter\&quot;:\&quot;approval_engine\&quot;,\&quot;submit_time\&quot;:\&quot;2026-05-20T13:01:38\&quot;,\&quot;seq_length\&quot;:20,\&quot;sequence\&quot;:\&quot;ATCGATCGATCGATCGATCG\&quot;,\&quot;features\&quot;:[{\&quot;feature_id\&quot;:27273,\&quot;key\&quot;:\&quot;gene\&quot;,\&quot;location\&quot;:\&quot;10..120\&quot;,\&quot;gene\&quot;:\&quot;demo_gene_upd\&quot;,\&quot;product\&quot;:\&quot;demo_product_upd\&quot;,\&quot;translation\&quot;:null,\&quot;note\&quot;:\&quot;demo note from procedure\&quot;}],\&quot;references\&quot;:[]}&quot;
+  },
+  &quot;detail_sql&quot;: []
+}</pre></div></body></html>

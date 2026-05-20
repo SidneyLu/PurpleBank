@@ -1,0 +1,16 @@
+<html><head><meta charset='utf-8'><style>
+body{font-family:Consolas,Monaco,monospace;background:#f5f7fb;color:#111;margin:0;padding:24px}
+.box{background:#fff;border:1px solid #cfd6e6;border-radius:10px;padding:18px;max-width:1500px}
+h1{font-size:24px;margin:0 0 8px 0} .meta{color:#555;margin-bottom:16px}
+pre{white-space:pre-wrap;word-break:break-word;background:#0b1020;color:#dbe6ff;padding:14px;border-radius:8px;font-size:14px;line-height:1.45}
+</style></head><body><div class='box'><h1>场景2 事务失败回滚</h1><div class='meta'>来源: 02_tx_rollback_failure.json（真实执行输出）</div><pre>{
+  &quot;before&quot;: {
+    &quot;feature&quot;: 1,
+    &quot;dna&quot;: 1
+  },
+  &quot;error&quot;: &quot;(1146, \&quot;Table &#x27;purple_bank.table_not_exists_for_demo&#x27; doesn&#x27;t exist\&quot;)&quot;,
+  &quot;after&quot;: {
+    &quot;feature&quot;: 1,
+    &quot;dna&quot;: 1
+  }
+}</pre></div></body></html>

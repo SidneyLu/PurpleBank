@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-05-20T13:01:38.879059",
+  "user_login": {
+    "status": 200,
+    "body": "{\"access_token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMCIsImlhdCI6MTc3OTI1MzI5OCwiZXhwIjoxNzc5MjYwNDk4LCJyb2xlIjoidXNlciJ9.ih-zraw0okdh0qEG4SF5-DIwAUyCiTthxVKVALyYbcE\",\"token_type\":\"bearer\",\"user\":{\"id\":10,\"username\":\"user_demo_case\",\"role\":\"user\",\"is_active\":true,\"created_at\":\"2026-05-20T12:56:12\"}}"
+  },
+  "admin_login": {
+    "status": 200,
+    "body": "{\"access_token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzc5MjUzMjk4LCJleHAiOjE3NzkyNjA0OTgsInJvbGUiOiJhZG1pbiJ9.cIajNutAGHEyb_Q2oXfnAy-aTuGWTGDl9jxYrzR2Kb8\",\"token_type\":\"bearer\",\"user\":{\"id\":1,\"username\":\"admin\",\"role\":\"admin\",\"is_active\":true,\"created_at\":\"2026-04-18T23:51:12\"}}"
+  }
+}

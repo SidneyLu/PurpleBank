@@ -1,0 +1,1 @@
+"""Core backend utilities such as settings, database wiring, and security helpers."""

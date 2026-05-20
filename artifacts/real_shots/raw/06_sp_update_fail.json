@@ -1,0 +1,16 @@
+{
+  "submit": {
+    "status": 201,
+    "body": "{\"id\":23,\"action_type\":\"UPDATE\",\"target_accession\":\"DEMO_NO_SUCH_ACCESSION_001\",\"payload_json\":{\"definition\":\"should fail\"},\"reason\":\"update fail\",\"status\":\"PENDING\",\"requester_id\":10,\"reviewer_id\":null,\"review_comment\":null,\"created_at\":\"2026-05-20T13:01:38\",\"reviewed_at\":null}"
+  },
+  "request_id": 23,
+  "review": {
+    "status": 500,
+    "body": "Internal Server Error"
+  },
+  "counts": {
+    "sequence": 0,
+    "feature": 0,
+    "log": 0
+  }
+}
